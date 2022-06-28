@@ -1,4 +1,4 @@
-import { ref, withModifiers, defineComponent } from 'vue';
+import { ref, withModifiers, defineComponent, toRefs } from 'vue';
 import './HelloWorld.css'
 
 export default defineComponent({
@@ -8,7 +8,7 @@ export default defineComponent({
 
   setup(props) {
     const count = ref(0)
-    const { msg } = props;
+    const { msg } = toRefs(props);
 
     const inc = () => {
       count.value++;
@@ -16,7 +16,7 @@ export default defineComponent({
 
     return () => (
       <>
-        <h1>{ msg }</h1>
+        <h1>{ msg.value }</h1>
 
         <p>
           Recommended IDE setup:
